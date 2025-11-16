@@ -56,8 +56,8 @@ export function Navigation() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
   const [isToolsOpen, setIsToolsOpen] = React.useState(false);
 
-  const servicesTimeoutRef = React.useRef<NodeJS.Timeout>();
-  const toolsTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const servicesTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
+  const toolsTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
