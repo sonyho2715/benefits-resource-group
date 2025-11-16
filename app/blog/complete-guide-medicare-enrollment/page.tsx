@@ -599,7 +599,7 @@ export default function MedicareEnrollmentGuidePage() {
               <Link href="/blog/medicare-supplement-plans-comparison">
                 <Card variant="bordered" className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
-                    <Badge variant="secondary" className="mb-3">Medicare & Healthcare</Badge>
+                    <Badge variant="primary" className="mb-3">Medicare & Healthcare</Badge>
                     <h4 className="font-semibold text-gray-900 mb-2">
                       Medicare Supplement Plans: A Complete Comparison
                     </h4>
@@ -612,7 +612,7 @@ export default function MedicareEnrollmentGuidePage() {
               <Link href="/blog/medicare-part-d-prescription-coverage">
                 <Card variant="bordered" className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
-                    <Badge variant="secondary" className="mb-3">Medicare & Healthcare</Badge>
+                    <Badge variant="primary" className="mb-3">Medicare & Healthcare</Badge>
                     <h4 className="font-semibold text-gray-900 mb-2">
                       Medicare Part D: Understanding Prescription Drug Coverage
                     </h4>

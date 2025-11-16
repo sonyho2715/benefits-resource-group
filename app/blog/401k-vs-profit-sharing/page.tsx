@@ -669,7 +669,7 @@ export default function Article401kVsProfitSharingPage() {
               <Link href="/blog/catch-up-contributions-50-plus">
                 <Card variant="bordered" className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
-                    <Badge variant="secondary" className="mb-3">Retirement Planning</Badge>
+                    <Badge variant="primary" className="mb-3">Retirement Planning</Badge>
                     <h4 className="font-semibold text-gray-900 mb-2">
                       Catch-Up Contributions: Maximize Your Retirement Savings at 50+
                     </h4>
@@ -682,7 +682,7 @@ export default function Article401kVsProfitSharingPage() {
               <Link href="/blog/roth-vs-traditional-401k">
                 <Card variant="bordered" className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
-                    <Badge variant="secondary" className="mb-3">Retirement Planning</Badge>
+                    <Badge variant="primary" className="mb-3">Retirement Planning</Badge>
                     <h4 className="font-semibold text-gray-900 mb-2">
                       Roth vs Traditional 401(k): Which is Better?
                     </h4>
