@@ -114,7 +114,7 @@ export default function AboutPage() {
             <div>
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/Larry Santiago.png"
+                  src="/images/larry-santiago.png"
                   alt="Larry Santiago, Founder of Benefits Resource Group LLC"
                   fill
                   className="object-cover"

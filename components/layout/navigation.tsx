@@ -56,7 +56,36 @@ export function Navigation() {
   const [isServicesOpen, setIsServicesOpen] = React.useState(false);
   const [isToolsOpen, setIsToolsOpen] = React.useState(false);
 
+  const servicesTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const toolsTimeoutRef = React.useRef<NodeJS.Timeout>();
+
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const handleServicesMouseEnter = () => {
+    if (servicesTimeoutRef.current) {
+      clearTimeout(servicesTimeoutRef.current);
+    }
+    setIsServicesOpen(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    servicesTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200);
+  };
+
+  const handleToolsMouseEnter = () => {
+    if (toolsTimeoutRef.current) {
+      clearTimeout(toolsTimeoutRef.current);
+    }
+    setIsToolsOpen(true);
+  };
+
+  const handleToolsMouseLeave = () => {
+    toolsTimeoutRef.current = setTimeout(() => {
+      setIsToolsOpen(false);
+    }, 200);
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-40">
@@ -89,8 +118,8 @@ export function Navigation() {
             {/* Services Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
+              onMouseEnter={handleServicesMouseEnter}
+              onMouseLeave={handleServicesMouseLeave}
             >
               <button
                 className={cn(
@@ -121,8 +150,8 @@ export function Navigation() {
             {/* Tools Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setIsToolsOpen(true)}
-              onMouseLeave={() => setIsToolsOpen(false)}
+              onMouseEnter={handleToolsMouseEnter}
+              onMouseLeave={handleToolsMouseLeave}
             >
               <button
                 className={cn(
