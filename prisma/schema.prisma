@@ -1,0 +1,572 @@
+// Benefits Resource Group LLC - Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// USER MANAGEMENT & AUTHENTICATION
+// ============================================================================
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+  CLIENT
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String
+  role          UserRole  @default(VIEWER)
+
+  // Profile
+  phone         String?
+  title         String?
+  bio           String?   @db.Text
+  avatar        String?
+
+  // Account status
+  emailVerified DateTime?
+  isActive      Boolean   @default(true)
+  lastLoginAt   DateTime?
+
+  // Relationships
+  blogPosts     BlogPost[]
+  leadAssignments LeadAssignment[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([email])
+  @@index([role])
+}
+
+// ============================================================================
+// CONTENT MANAGEMENT
+// ============================================================================
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PostCategory {
+  EMPLOYEE_BENEFITS
+  MEDICARE
+  RETIREMENT_PLANNING
+  ESTATE_PLANNING
+  BUSINESS_INSURANCE
+  HEALTH_WELLNESS
+  COMPANY_NEWS
+  INDUSTRY_UPDATES
+}
+
+model BlogPost {
+  id            String       @id @default(cuid())
+
+  title         String
+  slug          String       @unique
+  excerpt       String       @db.Text
+  content       String       @db.Text
+  coverImage    String?
+
+  status        PostStatus   @default(DRAFT)
+  category      PostCategory
+  tags          String[]
+
+  metaTitle     String?
+  metaDescription String?
+  keywords      String[]
+
+  author        User         @relation(fields: [authorId], references: [id])
+  authorId      String
+  publishedAt   DateTime?
+
+  views         Int          @default(0)
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([slug])
+  @@index([status, publishedAt])
+  @@index([category])
+  @@index([authorId])
+}
+
+model FAQ {
+  id            String       @id @default(cuid())
+
+  question      String       @db.Text
+  answer        String       @db.Text
+  category      PostCategory
+  order         Int          @default(0)
+
+  isPublished   Boolean      @default(true)
+  views         Int          @default(0)
+  helpful       Int          @default(0)
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([category, order])
+}
+
+// ============================================================================
+// CONTACT & LEAD MANAGEMENT
+// ============================================================================
+
+enum ContactSource {
+  CONTACT_FORM
+  CHAT
+  PHONE
+  EMAIL
+  REFERRAL
+  SOCIAL_MEDIA
+}
+
+enum ContactStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  UNQUALIFIED
+  CONVERTED
+  CLOSED
+}
+
+model ContactSubmission {
+  id            String        @id @default(cuid())
+
+  name          String
+  email         String
+  phone         String?
+  company       String?
+
+  source        ContactSource
+  subject       String?
+  message       String        @db.Text
+
+  pageUrl       String?
+  referrer      String?
+
+  status        ContactStatus @default(NEW)
+  notes         String?       @db.Text
+
+  assignedTo    String?
+  followUpDate  DateTime?
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status, createdAt])
+  @@index([source])
+}
+
+enum LeadSource {
+  BENEFITS_CALCULATOR
+  MEDICARE_CHECKER
+  RETIREMENT_ASSESSMENT
+  HEALTH_PLAN_COMPARISON
+  ROI_CALCULATOR
+  EXIT_STRATEGY_PLANNER
+  CONTACT_FORM
+  CHAT
+  PHONE
+  REFERRAL
+}
+
+enum ServiceInterest {
+  EMPLOYEE_BENEFITS
+  MEDICARE_ENROLLMENT
+  RETIREMENT_PLANNING
+  ESTATE_PLANNING
+  BUSINESS_INSURANCE
+  HEALTH_WELLNESS
+  GENERAL_INQUIRY
+}
+
+model Lead {
+  id            String           @id @default(cuid())
+
+  name          String
+  email         String
+  phone         String?
+  company       String?
+  companySize   String?
+  industry      String?
+
+  source        LeadSource
+  serviceInterest ServiceInterest
+
+  score         Int              @default(0)
+
+  status        ContactStatus    @default(NEW)
+  notes         String?          @db.Text
+
+  context       Json?
+
+  chatConversation ChatConversation?
+  savedCalculations SavedCalculation[]
+  activities    LeadActivity[]
+  assignments   LeadAssignment[]
+
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([email])
+  @@index([status, score])
+  @@index([source])
+  @@index([serviceInterest])
+  @@index([createdAt])
+}
+
+enum ActivityType {
+  CREATED
+  CONTACTED
+  EMAIL_SENT
+  EMAIL_OPENED
+  EMAIL_CLICKED
+  CALL_MADE
+  MEETING_SCHEDULED
+  MEETING_COMPLETED
+  TOOL_USED
+  CHAT_CONVERSATION
+  STATUS_CHANGED
+  NOTE_ADDED
+}
+
+model LeadActivity {
+  id            String       @id @default(cuid())
+
+  lead          Lead         @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  leadId        String
+
+  type          ActivityType
+  description   String       @db.Text
+  metadata      Json?
+
+  performedBy   String?
+
+  createdAt     DateTime     @default(now())
+
+  @@index([leadId, createdAt])
+  @@index([type])
+}
+
+model LeadAssignment {
+  id            String       @id @default(cuid())
+
+  lead          Lead         @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  leadId        String
+
+  user          User         @relation(fields: [userId], references: [id])
+  userId        String
+
+  assignedAt    DateTime     @default(now())
+
+  @@unique([leadId, userId])
+  @@index([userId])
+}
+
+// ============================================================================
+// INTERACTIVE TOOLS
+// ============================================================================
+
+enum ToolType {
+  BENEFITS_CALCULATOR
+  MEDICARE_CHECKER
+  RETIREMENT_ASSESSMENT
+  HEALTH_PLAN_COMPARISON
+  ROI_CALCULATOR
+  EXIT_STRATEGY_PLANNER
+}
+
+model SavedCalculation {
+  id            String       @id @default(cuid())
+
+  toolType      ToolType
+  toolVersion   String       @default("1.0")
+
+  email         String?
+  sessionId     String?
+
+  inputs        Json
+  results       Json
+
+  shareToken    String?      @unique
+  isPublic      Boolean      @default(false)
+
+  lead          Lead?        @relation(fields: [leadId], references: [id])
+  leadId        String?
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  expiresAt     DateTime?
+
+  @@index([email])
+  @@index([sessionId])
+  @@index([toolType, createdAt])
+  @@index([shareToken])
+  @@index([expiresAt])
+}
+
+model ToolAnalytics {
+  id            String       @id @default(cuid())
+
+  toolType      ToolType
+
+  views         Int          @default(0)
+  started       Int          @default(0)
+  completed     Int          @default(0)
+  saved         Int          @default(0)
+  shared        Int          @default(0)
+  leadsGenerated Int         @default(0)
+
+  date          DateTime     @unique
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@unique([toolType, date])
+  @@index([toolType, date])
+}
+
+// ============================================================================
+// AI CHAT SYSTEM
+// ============================================================================
+
+enum ConversationStatus {
+  ACTIVE
+  RESOLVED
+  ESCALATED
+  ABANDONED
+}
+
+model ChatConversation {
+  id            String             @id @default(cuid())
+
+  sessionId     String
+  email         String?
+  name          String?
+
+  status        ConversationStatus @default(ACTIVE)
+  topic         String?
+  sentiment     String?
+
+  startedOnPage String?
+  context       Json?
+
+  lead          Lead?              @relation(fields: [leadId], references: [id])
+  leadId        String?            @unique
+
+  messages      ChatMessage[]
+
+  messageCount  Int                @default(0)
+  averageResponseTime Int?
+
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  closedAt      DateTime?
+
+  @@index([sessionId])
+  @@index([email])
+  @@index([status, createdAt])
+  @@index([topic])
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+model ChatMessage {
+  id            String           @id @default(cuid())
+
+  conversation  ChatConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  conversationId String
+
+  role          MessageRole
+  content       String           @db.Text
+
+  model         String?
+  tokens        Int?
+
+  functionCall  Json?
+  toolUse       Json?
+
+  createdAt     DateTime         @default(now())
+
+  @@index([conversationId, createdAt])
+  @@index([role])
+}
+
+model ChatAnalytics {
+  id            String       @id @default(cuid())
+
+  totalConversations Int     @default(0)
+  activeConversations Int    @default(0)
+  resolvedConversations Int  @default(0)
+  escalatedConversations Int @default(0)
+  abandonedConversations Int @default(0)
+
+  totalMessages Int          @default(0)
+  averageMessagesPerConversation Float?
+  averageResponseTime Int?
+
+  topicBreakdown Json?
+  sentimentBreakdown Json?
+
+  leadsGenerated Int          @default(0)
+
+  totalTokensUsed Int?
+  estimatedCost Float?
+
+  date          DateTime      @unique
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([date])
+}
+
+// ============================================================================
+// SITE ANALYTICS
+// ============================================================================
+
+model PageView {
+  id            String       @id @default(cuid())
+
+  path          String
+  title         String?
+  referrer      String?
+
+  sessionId     String
+  ipAddress     String?
+  userAgent     String?
+
+  country       String?
+  region        String?
+  city          String?
+
+  timeOnPage    Int?
+
+  createdAt     DateTime     @default(now())
+
+  @@index([path, createdAt])
+  @@index([sessionId])
+  @@index([createdAt])
+}
+
+model ConversionEvent {
+  id            String       @id @default(cuid())
+
+  type          String
+  value         Float?
+
+  source        String?
+  path          String?
+
+  sessionId     String
+  email         String?
+
+  metadata      Json?
+
+  createdAt     DateTime     @default(now())
+
+  @@index([type, createdAt])
+  @@index([sessionId])
+}
+
+// ============================================================================
+// NOTIFICATIONS & SETTINGS
+// ============================================================================
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Task {
+  id            String       @id @default(cuid())
+
+  title         String
+  description   String?      @db.Text
+
+  status        TaskStatus   @default(PENDING)
+  priority      TaskPriority @default(MEDIUM)
+
+  assignedTo    String?
+
+  dueDate       DateTime?
+  completedAt   DateTime?
+
+  relatedLeadId String?
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([status, dueDate])
+  @@index([assignedTo, status])
+}
+
+enum NotificationType {
+  NEW_LEAD
+  LEAD_ASSIGNMENT
+  TASK_DUE
+  CHAT_ESCALATION
+  SYSTEM_ALERT
+}
+
+model Notification {
+  id            String           @id @default(cuid())
+
+  type          NotificationType
+  title         String
+  message       String           @db.Text
+
+  recipientId   String
+
+  isRead        Boolean          @default(false)
+  readAt        DateTime?
+
+  actionUrl     String?
+
+  metadata      Json?
+
+  createdAt     DateTime         @default(now())
+
+  @@index([recipientId, isRead, createdAt])
+  @@index([type])
+}
+
+model Setting {
+  id            String       @id @default(cuid())
+
+  key           String       @unique
+  value         Json
+  description   String?      @db.Text
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([key])
+}

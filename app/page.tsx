@@ -1,65 +1,311 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Shield,
+  Users,
+  TrendingUp,
+  Heart,
+  Calculator,
+  MessageCircle,
+  CheckCircle,
+  Star,
+  ArrowRight,
+} from 'lucide-react';
 
-export default function Home() {
+const services = [
+  {
+    icon: Users,
+    title: 'Business Benefits',
+    description:
+      'Comprehensive employee benefits packages that attract and retain top talent while managing costs.',
+    href: '/services/business-benefits',
+  },
+  {
+    icon: Heart,
+    title: 'Medicare Enrollment',
+    description:
+      'Expert guidance through Medicare options to find the best coverage for your unique situation.',
+    href: '/services/medicare-enrollment',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Retirement Planning',
+    description:
+      '401(k) and retirement solutions designed to help your employees secure their financial future.',
+    href: '/services/retirement-planning',
+  },
+  {
+    icon: Shield,
+    title: 'Estate Planning',
+    description:
+      'Protect your legacy and ensure your assets are distributed according to your wishes.',
+    href: '/services/estate-planning',
+  },
+];
+
+const tools = [
+  {
+    title: 'Benefits Calculator',
+    description: 'Estimate costs and ROI for employee benefits packages',
+    href: '/tools/benefits-calculator',
+  },
+  {
+    title: 'Medicare Checker',
+    description: 'Check eligibility and compare Medicare plan options',
+    href: '/tools/medicare-checker',
+  },
+  {
+    title: 'Retirement Calculator',
+    description: 'Plan your retirement savings and investment strategy',
+    href: '/tools/retirement-calculator',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'CEO, Pacific Tech Solutions',
+    content:
+      'Benefits Resource Group transformed our employee benefits program. Their expertise helped us reduce costs by 20% while improving coverage. Highly recommended!',
+    rating: 5,
+  },
+  {
+    name: 'Michael Chen',
+    role: 'HR Director, Island Hospitality Group',
+    content:
+      'The team at BRG made Medicare enrollment so easy for our retiring employees. Their personalized guidance and support are unmatched.',
+    rating: 5,
+  },
+  {
+    name: 'Jennifer Martinez',
+    role: 'Owner, Martinez Family Restaurant',
+    content:
+      'As a small business owner, I was overwhelmed by benefits options. BRG simplified everything and found solutions that fit our budget perfectly.',
+    rating: 5,
+  },
+];
+
+const stats = [
+  { value: '500+', label: 'Businesses Served' },
+  { value: '8 Years', label: 'Of Excellence' },
+  { value: '5 States', label: 'Service Coverage' },
+  { value: '98%', label: 'Client Satisfaction' },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
+                Expert Benefits Consulting for Your Business & Future
+              </h1>
+              <p className="text-xl lg:text-2xl mb-8 text-blue-100">
+                Serving Hawaii, California, Nevada, Utah, and Washington with comprehensive
+                benefits solutions since 2017.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="/contact">
+                    Get Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="bg-transparent text-white border-white hover:bg-white/10">
+                  <Link href="/tools/benefits-calculator">Try Our Calculator</Link>
+                </Button>
+              </div>
+              <div className="mt-8 flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <span>Licensed in 5 States</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <span>8+ Years Experience</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <Card variant="elevated" className="bg-white/10 backdrop-blur-md border-white/20">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 text-white">
+                    <MessageCircle className="w-12 h-12 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">
+                        24/7 AI Benefits Assistant
+                      </h3>
+                      <p className="text-blue-100 mb-4">
+                        Get instant answers to your benefits questions anytime, powered by
+                        advanced AI technology.
+                      </p>
+                      <Button variant="secondary" size="sm">
+                        Chat Now
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="bg-gray-50 py-12 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Comprehensive Benefits Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From employee benefits to retirement planning, we provide expert guidance
+              tailored to your unique needs.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service) => (
+              <Card
+                key={service.title}
+                variant="bordered"
+                className="hover:shadow-lg transition-shadow cursor-pointer group"
+              >
+                <Link href={service.href}>
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+                      <service.icon className="w-6 h-6 text-blue-600 group-hover:text-white" />
+                    </div>
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardDescription>{service.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center text-blue-600 font-medium group-hover:gap-2 transition-all">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:ml-2 transition-all" />
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/services">View All Services</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Tools Section */}
+      <section className="bg-blue-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
+              <Calculator className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Free Interactive Tools
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Make informed decisions with our suite of free calculators and planning tools.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {tools.map((tool) => (
+              <Card key={tool.title} variant="elevated">
+                <CardHeader>
+                  <CardTitle className="text-xl">{tool.title}</CardTitle>
+                  <CardDescription>{tool.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button asChild className="w-full">
+                    <Link href={tool.href}>Try It Now</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Trusted by businesses and individuals across 5 states.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.name} variant="bordered">
+                <CardContent className="pt-6">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-6">{testimonial.content}</p>
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            Ready to Optimize Your Benefits?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Schedule a free consultation with our benefits experts and discover how we can
+            help you save money while improving coverage.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/contact">
+                Get Free Consultation
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="bg-transparent text-white border-white hover:bg-white/10">
+              <Link href="/about">Learn About Us</Link>
+            </Button>
+          </div>
+          <p className="mt-8 text-sm text-blue-200">
+            No obligation. No pressure. Just expert advice.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
