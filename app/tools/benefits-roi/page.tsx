@@ -318,7 +318,7 @@ export default function BenefitsROIPage() {
                         </h2>
                         <Badge
                           size="lg"
-                          variant={results.netROI > 0 ? 'success' : 'secondary'}
+                          variant={results.netROI > 0 ? 'success' : 'warning'}
                           className="bg-white/20 text-white"
                         >
                           {results.roiPercentage > 0 ? '+' : ''}
