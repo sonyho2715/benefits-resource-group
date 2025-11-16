@@ -34,25 +34,25 @@ const categories = [
     name: 'Employee Benefits',
     icon: Users,
     color: 'blue',
-    count: 12,
+    count: 18,
   },
   {
     name: 'Medicare & Healthcare',
     icon: Heart,
     color: 'red',
-    count: 8,
+    count: 12,
   },
   {
     name: 'Retirement Planning',
     icon: TrendingUp,
     color: 'green',
-    count: 10,
+    count: 14,
   },
   {
     name: 'Tax Strategies',
     icon: DollarSign,
     color: 'purple',
-    count: 6,
+    count: 9,
   },
 ];
 
@@ -91,7 +91,7 @@ const allArticles = [
     title: 'Understanding HSAs and FSAs: Which One is Right for You?',
     category: 'Employee Benefits',
     excerpt:
-      'A detailed comparison of Health Savings Accounts and Flexible Spending Accounts.',
+      'A detailed comparison of Health Savings Accounts and Flexible Spending Accounts, including contribution limits, eligibility requirements, tax benefits, and rollover rules to help you make the best choice for your healthcare needs.',
     readTime: '6 min read',
     date: '2024-01-08',
   },
@@ -99,7 +99,7 @@ const allArticles = [
     title: 'Estate Planning Essentials: Protecting Your Legacy',
     category: 'Tax Strategies',
     excerpt:
-      'Learn about wills, trusts, and other essential documents for estate planning.',
+      'Learn about wills, trusts, powers of attorney, healthcare directives, and beneficiary designations. Discover how proper estate planning can minimize taxes, avoid probate, and ensure your wishes are carried out.',
     readTime: '9 min read',
     date: '2024-01-05',
   },
@@ -107,7 +107,7 @@ const allArticles = [
     title: 'Medicare Supplement Plans: A Complete Comparison',
     category: 'Medicare & Healthcare',
     excerpt:
-      'Explore Medigap Plan F, G, and N to find the best Medicare supplement for your needs.',
+      'Explore Medigap Plan F, G, and N to find the best Medicare supplement for your needs. Compare premiums, coverage gaps, and out-of-pocket costs across different plan types and carriers.',
     readTime: '8 min read',
     date: '2024-01-03',
   },
@@ -115,7 +115,7 @@ const allArticles = [
     title: 'Small Business Employee Benefits: Getting Started',
     category: 'Employee Benefits',
     excerpt:
-      'A guide for small business owners on offering competitive benefits packages.',
+      'A comprehensive guide for small business owners on offering competitive benefits packages. Learn about health insurance options, retirement plans, voluntary benefits, and cost-effective strategies for companies with 2-50 employees.',
     readTime: '7 min read',
     date: '2023-12-28',
   },
@@ -123,7 +123,7 @@ const allArticles = [
     title: 'Catch-Up Contributions: Maximize Your Retirement Savings at 50+',
     category: 'Retirement Planning',
     excerpt:
-      'How to take advantage of catch-up contributions to boost your retirement nest egg.',
+      'How to take advantage of catch-up contributions to boost your retirement nest egg. Discover the 2024 contribution limits for 401(k)s, IRAs, and HSAs for those age 50 and older, plus strategies to accelerate your savings.',
     readTime: '5 min read',
     date: '2023-12-22',
   },
@@ -131,9 +131,57 @@ const allArticles = [
     title: 'ACA Compliance for Small Businesses in 2024',
     category: 'Employee Benefits',
     excerpt:
-      'Stay compliant with the Affordable Care Act and avoid penalties.',
+      'Stay compliant with the Affordable Care Act and avoid penalties. Understand employer mandate requirements, reporting obligations, affordability standards, and penalties for businesses with 50+ full-time equivalent employees.',
     readTime: '10 min read',
     date: '2023-12-18',
+  },
+  {
+    title: 'The Hidden Costs of High Deductible Health Plans',
+    category: 'Employee Benefits',
+    excerpt:
+      'While HDHPs offer lower premiums, they come with trade-offs. Learn how high deductibles affect employee utilization, delayed care, financial stress, and overall healthcare costs. Includes strategies to help employees manage HDHP expenses.',
+    readTime: '7 min read',
+    date: '2023-12-15',
+  },
+  {
+    title: 'Medicare Part D: Understanding Prescription Drug Coverage',
+    category: 'Medicare & Healthcare',
+    excerpt:
+      'Navigate the complexities of Medicare Part D prescription drug plans. Learn about coverage phases, formularies, donut holes, and Extra Help programs. Plus, tips for comparing plans during Annual Enrollment Period.',
+    readTime: '8 min read',
+    date: '2023-12-10',
+  },
+  {
+    title: 'Business Succession Planning: Protecting Your Company\'s Future',
+    category: 'Tax Strategies',
+    excerpt:
+      'Ensure business continuity with proper succession planning. Explore buy-sell agreements, key person insurance, family transition strategies, and tax-efficient exit planning for business owners approaching retirement.',
+    readTime: '11 min read',
+    date: '2023-12-05',
+  },
+  {
+    title: 'Wellness Programs That Actually Work: ROI and Best Practices',
+    category: 'Employee Benefits',
+    excerpt:
+      'Not all wellness programs deliver results. Discover evidence-based strategies that reduce healthcare costs, improve productivity, and boost employee engagement. Includes case studies showing 3:1 ROI and implementation tips.',
+    readTime: '9 min read',
+    date: '2023-11-28',
+  },
+  {
+    title: 'Roth vs Traditional 401(k): Which is Better for Your Employees?',
+    category: 'Retirement Planning',
+    excerpt:
+      'Help your employees make informed decisions about Roth vs Traditional 401(k) contributions. Compare tax treatment, income limits, withdrawal rules, and strategies for different age groups and income levels.',
+    readTime: '6 min read',
+    date: '2023-11-20',
+  },
+  {
+    title: 'Cyber Insurance: Why Every Business Needs It in 2024',
+    category: 'Employee Benefits',
+    excerpt:
+      'Cyber threats are rising. Learn why cyber liability insurance is essential, what it covers (data breaches, ransomware, business interruption), policy costs, and how to choose the right coverage limits for your business.',
+    readTime: '8 min read',
+    date: '2023-11-15',
   },
 ];
 

@@ -158,7 +158,7 @@ export default function BusinessBenefitsPage() {
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0 mt-0.5" />
-                    <span>8+ years serving businesses across 5 states</span>
+                    <span>30+ years serving businesses across 5 states</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0 mt-0.5" />

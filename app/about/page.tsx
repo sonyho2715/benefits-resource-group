@@ -49,7 +49,7 @@ const values = [
 ];
 
 const stats = [
-  { value: '8+', label: 'Years in Business' },
+  { value: '30+', label: 'Years of Experience' },
   { value: '500+', label: 'Businesses Served' },
   { value: '5', label: 'States Covered' },
   { value: '98%', label: 'Client Satisfaction' },
@@ -130,7 +130,7 @@ export default function AboutPage() {
                 Larry Santiago
               </h3>
               <p className="text-lg text-gray-700 mb-6">
-                With over 8 years of experience in the benefits industry, Larry Santiago
+                With over 30 years of experience in the benefits industry, Larry Santiago
                 founded Benefits Resource Group LLC in 2017 to provide comprehensive,
                 client-focused benefits solutions across the Pacific and Western United
                 States.

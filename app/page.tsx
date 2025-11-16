@@ -88,7 +88,7 @@ const testimonials = [
 
 const stats = [
   { value: '500+', label: 'Businesses Served' },
-  { value: '8 Years', label: 'Of Excellence' },
+  { value: '30+ Years', label: 'Of Experience' },
   { value: '5 States', label: 'Service Coverage' },
   { value: '98%', label: 'Client Satisfaction' },
 ];
@@ -134,7 +134,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-300" />
-                  <span>8+ Years Experience</span>
+                  <span>30+ Years Experience</span>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
                 Why Choose Benefits Resource Group?
               </h2>
               <p className="text-lg text-gray-700 mb-8">
-                With over 8 years of experience serving businesses and individuals across 5 states,
+                With over 30 years of experience serving businesses and individuals across 5 states,
                 we bring expertise, dedication, and personalized service to every client relationship.
               </p>
               <div className="space-y-6">
