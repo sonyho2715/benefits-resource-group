@@ -392,7 +392,7 @@ export default function GroupHealthEstimatorPage() {
                               <span className="font-medium text-gray-900">
                                 Individual Coverage
                               </span>
-                              <Badge variant="secondary">
+                              <Badge variant="info">
                                 {results.breakdown.individual.count} employees
                               </Badge>
                             </div>
@@ -419,7 +419,7 @@ export default function GroupHealthEstimatorPage() {
                               <span className="font-medium text-gray-900">
                                 Employee + Spouse/Partner
                               </span>
-                              <Badge variant="secondary">
+                              <Badge variant="info">
                                 {results.breakdown.employeePlusOne.count} employees
                               </Badge>
                             </div>
@@ -444,7 +444,7 @@ export default function GroupHealthEstimatorPage() {
                           <div className="pb-4">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-gray-900">Family Coverage</span>
-                              <Badge variant="secondary">
+                              <Badge variant="info">
                                 {results.breakdown.family.count} employees
                               </Badge>
                             </div>
@@ -509,7 +509,7 @@ export default function GroupHealthEstimatorPage() {
                   <p className="text-sm text-gray-700 mb-3">
                     Mid-range cost. No referrals needed but must stay in-network for coverage.
                   </p>
-                  <Badge variant="secondary">Moderate Cost</Badge>
+                  <Badge variant="info">Moderate Cost</Badge>
                 </CardContent>
               </Card>
 
@@ -520,7 +520,7 @@ export default function GroupHealthEstimatorPage() {
                   <p className="text-sm text-gray-700 mb-3">
                     Higher cost. Maximum flexibility with in-network and out-of-network coverage.
                   </p>
-                  <Badge variant="secondary">Most Flexible</Badge>
+                  <Badge variant="info">Most Flexible</Badge>
                 </CardContent>
               </Card>
 

@@ -330,7 +330,7 @@ export default function ResourcesPage() {
             {allArticles.map((article) => (
               <Card key={article.title} variant="bordered" className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
-                  <Badge variant="secondary" className="mb-3">
+                  <Badge variant="info" className="mb-3">
                     {article.category}
                   </Badge>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">{article.title}</h3>
