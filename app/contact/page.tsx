@@ -120,10 +120,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                     <a
-                      href="tel:+18085551234"
+                      href="tel:+18082862323"
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
-                      (808) 555-1234
+                      (808) 286-2323
                     </a>
                   </div>
                 </div>
@@ -150,9 +150,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
                     <p className="text-gray-600">
-                      Honolulu, Hawaii
+                      1708 Nuuanu Avenue, Suite 104
                       <br />
-                      Serving HI, CA, NV, UT, WA
+                      Honolulu, HI 96817
+                      <br />
+                      <span className="text-sm">Serving HI, CA, NV, UT, WA</span>
                     </p>
                   </div>
                 </div>

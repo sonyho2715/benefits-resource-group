@@ -52,15 +52,15 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Honolulu, Hawaii</span>
+                <span>1708 Nuuanu Avenue, Suite 104<br />Honolulu, HI 96817</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <a
-                  href="tel:+18085551234"
+                  href="tel:+18082862323"
                   className="hover:text-white transition-colors"
                 >
-                  (808) 555-1234
+                  (808) 286-2323
                 </a>
               </div>
               <div className="flex items-center gap-2">

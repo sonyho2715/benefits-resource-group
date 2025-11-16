@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
+import { AIChatWidget } from "@/components/ai-chat-widget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <AIChatWidget />
       </body>
     </html>
   );

@@ -97,8 +97,16 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white overflow-hidden">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
@@ -212,6 +220,67 @@ export default function HomePage() {
             <Button size="lg" variant="outline" asChild>
               <Link href="/services">View All Services</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section with Image */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80"
+                  alt="Professional team meeting"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                Why Choose Benefits Resource Group?
+              </h2>
+              <p className="text-lg text-gray-700 mb-8">
+                With over 8 years of experience serving businesses and individuals across 5 states,
+                we bring expertise, dedication, and personalized service to every client relationship.
+              </p>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Licensed & Trusted</h3>
+                    <p className="text-gray-600">
+                      Fully licensed in Hawaii, California, Nevada, Utah, and Washington with a proven track record.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Personalized Service</h3>
+                    <p className="text-gray-600">
+                      We take time to understand your unique needs and provide customized solutions, not one-size-fits-all packages.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Proven Results</h3>
+                    <p className="text-gray-600">
+                      Our clients save an average of 20% on benefits costs while improving coverage quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
