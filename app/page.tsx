@@ -12,6 +12,8 @@ import {
   Star,
   ArrowRight,
 } from 'lucide-react';
+import { StructuredData } from '@/components/seo/structured-data';
+import { localBusinessSchema } from '@/lib/structured-data';
 
 const services = [
   {
@@ -95,7 +97,9 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <div className="bg-white">
+    <>
+      <StructuredData data={localBusinessSchema} />
+      <div className="bg-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white overflow-hidden">
         {/* Background Image Overlay */}
@@ -369,5 +373,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

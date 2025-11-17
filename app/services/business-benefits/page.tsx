@@ -20,6 +20,8 @@ import {
   Award,
   FileText,
 } from 'lucide-react';
+import { StructuredData } from '@/components/seo/structured-data';
+import { createServiceSchema, createFAQSchema } from '@/lib/structured-data';
 
 export const metadata: Metadata = {
   title: 'Business Benefits Solutions | Benefits Resource Group LLC',
@@ -116,9 +118,42 @@ const process = [
   },
 ];
 
+const faqData = [
+  {
+    question: 'What size businesses do you work with?',
+    answer: 'We work with businesses of all sizes, from small startups with just a few employees to large corporations. Our solutions are customized to fit your company size, budget, and specific needs.',
+  },
+  {
+    question: 'How much do employee benefits typically cost?',
+    answer: 'The cost varies based on company size, coverage levels, and employee demographics. On average, small businesses spend $500-1,500 per employee per month. We help you find the most cost-effective options while maintaining quality coverage.',
+  },
+  {
+    question: 'Can I offer different benefits to different employees?',
+    answer: 'Generally, you must offer the same core benefits to all full-time employees in the same class. However, employees can choose different coverage levels, and you can offer additional voluntary benefits that employees pay for themselves.',
+  },
+  {
+    question: 'What is the difference between fully-insured and self-funded plans?',
+    answer: 'Fully-insured plans have fixed monthly premiums paid to an insurance carrier who assumes all risk. Self-funded plans involve the employer paying claims directly, offering more control and potential savings but with more financial risk. We help you determine which is right for your business.',
+  },
+  {
+    question: 'Do you provide ongoing support after implementation?',
+    answer: 'Yes! We provide year-round support including employee enrollment assistance, claims support, annual plan reviews, renewal negotiations, and compliance updates. You\'ll have a dedicated account manager available whenever you need help.',
+  },
+];
+
+const serviceSchema = createServiceSchema(
+  'Employee Benefits Consulting',
+  'Comprehensive employee benefits packages including group health, dental, vision, life insurance, disability, retirement plans, and wellness programs for businesses in Hawaii, California, Nevada, Utah, and Washington.'
+);
+
+const faqSchema = createFAQSchema(faqData);
+
 export default function BusinessBenefitsPage() {
   return (
-    <div className="bg-white">
+    <>
+      <StructuredData data={serviceSchema} />
+      <StructuredData data={faqSchema} />
+      <div className="bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -330,5 +365,6 @@ export default function BusinessBenefitsPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
