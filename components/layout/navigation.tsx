@@ -189,6 +189,16 @@ export function Navigation() {
             </Link>
 
             <Link
+              href="/blog"
+              className={cn(
+                'text-sm font-medium transition-colors hover:text-blue-600',
+                pathname.startsWith('/blog') ? 'text-blue-600' : 'text-gray-700'
+              )}
+            >
+              Blog
+            </Link>
+
+            <Link
               href="/about"
               className={cn(
                 'text-sm font-medium transition-colors hover:text-blue-600',
@@ -303,6 +313,14 @@ export function Navigation() {
                 onClick={closeMobileMenu}
               >
                 Resources
+              </Link>
+
+              <Link
+                href="/blog"
+                className="text-gray-700 hover:text-blue-600 font-medium"
+                onClick={closeMobileMenu}
+              >
+                Blog
               </Link>
 
               <Link
