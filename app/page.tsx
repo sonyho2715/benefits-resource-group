@@ -139,25 +139,18 @@ export default function HomePage() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <Card variant="elevated" className="bg-white/10 backdrop-blur-md border-white/20">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4 text-white">
-                    <MessageCircle className="w-12 h-12 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">
-                        24/7 AI Benefits Assistant
-                      </h3>
-                      <p className="text-blue-100 mb-4">
-                        Get instant answers to your benefits questions anytime, powered by
-                        advanced AI technology.
-                      </p>
-                      <Button variant="secondary" size="sm">
-                        Chat Now
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/teL0paRFOTg"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full aspect-video"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
