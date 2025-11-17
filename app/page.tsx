@@ -101,7 +101,7 @@ export default function HomePage() {
         {/* Background Image Overlay */}
         <div className="absolute inset-0 opacity-10">
           <img
-            src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1542259009477-d625272157b7?w=1920&q=80"
             alt=""
             className="w-full h-full object-cover"
           />
